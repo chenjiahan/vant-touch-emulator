@@ -1,9 +1,10 @@
 /**
- * 模拟移动端 touch 事件
- * 来源：https://github.com/hammerjs/touchemulator
+ * Emulate touch event
+ * Source：https://github.com/hammerjs/touchemulator
  */
 
 var eventTarget;
+var supportTouch = 'ontouchstart' in window;
 
 // polyfills
 if (!document.createTouch) {
@@ -181,4 +182,6 @@ function TouchEmulator() {
 // start distance when entering the multitouch mode
 TouchEmulator['multiTouchOffset'] = 75;
 
-new TouchEmulator();
+if (!supportTouch) {
+  new TouchEmulator();
+}
